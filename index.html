@@ -16,8 +16,16 @@
 
 		<div>
 			<h1>Test Script</h1>
-			<button onClick="increment()">+1</button><hr>
-			<h1><div id="answer"></div></h1>
+			<button onClick="increment()">+1</button>
+			<button onClick="reset()">Reset</button>
+			<button onClick="backup()">Backup</button>
+			<button onClick="clearLocal()">Wipe All</button>
+			<hr>
+			<h1>Main</h1>
+			<h2><div id="answer"></div></h2>
+			<hr>
+			<h1>Backup</h1>
+			<h2><div id="backup"></div></h2>
 		</div>
 
 	</div>
@@ -30,27 +38,44 @@
 </body>
 
 <script>
-	// let x = document.getElementById("answer");
-let x = 0;
-// localStorage.numberTest = 0;
+// let x = document.getElementById("answer");
+// let x = 0;
+// localStorage.numberTest = 0; // initialize variable
 
-
-if (localStorage.numberTest) {
+// this conditional initialization makes it so that even first visit will be initialized
+if (localStorage.numberTest) { //if there's already a default value, use it
     localStorage.numberTest = Number(localStorage.numberTest);
-} else {
+} else { // else init as 0
     localStorage.numberTest = 0;
 }
 
+// populate element with default value
 document.getElementById("answer").innerHTML = Number(localStorage.numberTest);
-
+document.getElementById("backup").innerHTML = Number(localStorage.numberBackup);
 
 function increment() {
     // x++;
     // document.getElementById("answer").innerHTML = x;
-
     localStorage.numberTest ++;
     document.getElementById("answer").innerHTML = localStorage.numberTest;
 }
+
+function reset() {
+	localStorage.numberTest = 0;
+	document.getElementById("answer").innerHTML = localStorage.numberTest;
+}
+
+function backup() {
+	localStorage.numberBackup = localStorage.numberTest;
+	document.getElementById("backup").innerHTML = localStorage.numberBackup;
+}
+
+function clearLocal() {
+	localStorage.clear();
+	document.getElementById("answer").innerHTML = localStorage.numberTest;
+	document.getElementById("backup").innerHTML = localStorage.numberBackup;
+}
+
 </script>
 
 
