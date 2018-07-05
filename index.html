@@ -4,15 +4,6 @@
 	<title>Website Title</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<script>
-	// let x = document.getElementById("answer");
-	let x = 0;
-function increment() {
-    x++;
-    document.getElementById("answer").innerHTML = x;
-}
-</script>
-
 </head>
 <body>
 	<div class="menu">
@@ -26,7 +17,7 @@ function increment() {
 		<div>
 			<h1>Test Script</h1>
 			<button onClick="increment()">+1</button><hr>
-			<h1><div id="answer">0</div></h1>
+			<h1><div id="answer"></div></h1>
 		</div>
 
 	</div>
@@ -37,4 +28,30 @@ function increment() {
 		<p>Good bye!</p>		
 	</div>
 </body>
+
+<script>
+	// let x = document.getElementById("answer");
+let x = 0;
+// localStorage.numberTest = 0;
+
+
+if (localStorage.numberTest) {
+    localStorage.numberTest = Number(localStorage.numberTest);
+} else {
+    localStorage.numberTest = 0;
+}
+
+document.getElementById("answer").innerHTML = Number(localStorage.numberTest);
+
+
+function increment() {
+    // x++;
+    // document.getElementById("answer").innerHTML = x;
+
+    localStorage.numberTest ++;
+    document.getElementById("answer").innerHTML = localStorage.numberTest;
+}
+</script>
+
+
 </html>
