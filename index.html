@@ -15,14 +15,22 @@
 		<p>Lorem Ipsum</p>
 
 		<div>
-			<h1>Test Script</h1>
-			<button onClick="increment()">+1</button>
-			<button onClick="reset()">Reset</button>
-			<button onClick="backup()">Backup</button>
+			<h1>Input Script</h1>
+
+			  First name: <input type="text" name="fname" id="fname"><br>
+			  Last name: <input type="text" name="lname" id="lname"><br><br>
+			  <button onClick="addData()">Add Data</button>
+			  <!-- <input type="button" onclick="addData()" value="Submit"> -->
+
+
+			<!-- <button onClick="increment()">+1</button> -->
+			<button onClick="reset()">Reset Name List</button>
+			<button onClick="backup()">Create Backup</button>
+			<button onClick="restore()">Restore Backup</button>
 			<button onClick="clearLocal()">Wipe All</button>
 			<hr>
-			<h1>Main</h1>
-			<h2><div id="answer"></div></h2>
+			<h1>Name</h1>
+			<h2><div id="name"></div></h2>
 			<hr>
 			<h1>Backup</h1>
 			<h2><div id="backup"></div></h2>
@@ -38,45 +46,105 @@
 </body>
 
 <script>
-// let x = document.getElementById("answer");
-// let x = 0;
-// localStorage.numberTest = 0; // initialize variable
 
-// this conditional initialization makes it so that even first visit will be initialized
-if (localStorage.numberTest) { //if there's already a default value, use it
-    localStorage.numberTest = Number(localStorage.numberTest);
-} else { // else init as 0
-    localStorage.numberTest = 0;
-}
-
-// populate element with default value
-document.getElementById("answer").innerHTML = Number(localStorage.numberTest);
-document.getElementById("backup").innerHTML = Number(localStorage.numberBackup);
-
-function increment() {
-    // x++;
-    // document.getElementById("answer").innerHTML = x;
-    localStorage.numberTest ++;
-    document.getElementById("answer").innerHTML = localStorage.numberTest;
-}
-
-function reset() {
-	localStorage.numberTest = 0;
-	document.getElementById("answer").innerHTML = localStorage.numberTest;
-}
-
-function backup() {
-	localStorage.numberBackup = localStorage.numberTest;
-	document.getElementById("backup").innerHTML = localStorage.numberBackup;
-}
-
-function clearLocal() {
-	localStorage.clear();
-	document.getElementById("answer").innerHTML = localStorage.numberTest;
-	document.getElementById("backup").innerHTML = localStorage.numberBackup;
-}
 
 </script>
 
 
 </html>
+
+<script>
+//init localstorage
+// localStorage.setItem("fname", "");
+// localStorage.setItem("lname", "");
+function initLocal(){
+		if(!localStorage.listId) {
+		localStorage.listId = 0;
+	}
+}
+
+function initDOM() {
+	printData();
+	printBackup();
+
+}
+
+// init dom with existing local
+initLocal();
+initDOM();
+
+function addData() {
+
+	var fname = document.getElementById("fname").value;
+	var lname = document.getElementById("lname").value;
+
+	localStorage.setItem("fname"+localStorage.listId, fname);
+	localStorage.setItem("lname"+localStorage.listId, lname);
+
+	// document.getElementById("fname").innerHTML = "";
+	// document.getElementById("lname").innerHTML = "";
+
+	// document.getElementById("fname").reset();
+	// document.getElementById("lname").reset();
+
+    printData();
+
+    localStorage.listId ++;
+}
+
+
+
+// I should refactor this code, it stinks. I smell error coming up in the future. I want to make it more concise, more reusable, even at the cost of writing more helper functions
+function printData() {
+	var final = ""; //init
+
+	for(var i =0; i <= localStorage.listId; i ++){
+		var fname = "fname".concat(i); //for example, this part could use a helper, with a variable name so that it can be re-used to store multiple data types
+		var lname = "lname".concat(i);
+		final += "<li id=\"" + i + "\">" + localStorage.getItem(fname) + " " + localStorage.getItem(lname) + "</li>";
+		document.getElementById("name").innerHTML = final;	
+	}
+	// console.log(final);
+}
+
+
+function reset() {
+	var final = ""; //init
+
+	for(var i =0; i <= localStorage.listId; i ++){
+		var fname = "fname".concat(i); //for example, this part could use a helper, with a variable name so that it can be re-used to store multiple data types
+		var lname = "lname".concat(i);
+		localStorage.removeItem(fname);
+		localStorage.removeItem(lname);
+	}
+
+	localStorage.listId = 0;
+
+	printData();
+}
+
+function backup() {
+	// localStorage.numberBackup = localStorage.numberTest;
+	localStorage.backup = document.getElementById("name").innerHTML;
+	printBackup();
+}
+
+function restore() { // the restore function is superficial at this point, only render the DOM, doesn't restore the key and data pairs
+	document.getElementById("name").innerHTML = localStorage.backup;
+}
+
+function printBackup() {
+	document.getElementById("backup").innerHTML = localStorage.backup;
+}
+
+function clearLocal() {
+	localStorage.clear();
+	// document.getElementById("answer").innerHTML = localStorage.numberTest;
+	// document.getElementById("backup").innerHTML = localStorage.numberBackup;
+	//TODO: wipe and re-init all variables
+	initLocal();
+	initDOM();
+	document.getElementById("name").innerHTML = "";
+}
+
+</script>
