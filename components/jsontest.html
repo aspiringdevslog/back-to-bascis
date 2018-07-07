@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Test</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+	console.log("Hello World!");
+
+// first get an array
+var arr = [];
+for(var i=0; i<10;i++)
+arr.push({
+	id: i,
+	name: "test" + i
+});
+
+console.log(arr);
+// next JSON.stringify it
+
+var string = JSON.stringify(arr);
+console.log(string);
+
+// then parse it
+var arr2 =[];
+var unstring = JSON.parse(string);
+arr2 = unstring;
+
+console.log(arr2);
+
+// then push a new item into the array
+arr2.push({
+	id: 1,
+	name: "test"
+});
+console.log(arr2);
+
+arr2.pop();
+console.log(arr2);
+
+// now try to remove an item by id 
+// http://blog.teamtreehouse.com/how-to-use-the-javascript-splice-method, splice can also be used for edits
+// splice(position, number of elements, new insert if any)
+// splice(id, 1, new)
+arr2.splice(5, 1, {
+		id: 55,
+		name: "kajs"
+	}
+	);
+
+
+console.log(arr2);
+
+
+
+
+</script>
