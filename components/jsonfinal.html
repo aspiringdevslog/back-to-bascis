@@ -2,12 +2,15 @@
 <html>
 <head>
 	<title>JSON Test</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+	<!-- libraries/reference should be on the top -->
 </head>
 <body>
 
-	<input type="text" name="input" id="input"><button id="add" onClick="addTaskSimple()">Simplified Add task</button>
-	<button id="add" onClick="deleteTask()">Delete Task</button>
+	<input type="text" name="input" id="input"><button id="add" onClick="addTaskSimple()">Add task</button>
+	<!-- <button id="add" onClick="deleteTask()">Delete Task</button> -->
+	<input type="text" name="editField" id="editField"><button id="edit" onClick="editTask()">Edit task</button>
+
 	<!-- <input type="text" name="input" id="input"><button id="add" onClick="addTaskSimple('testKey', 'test data user input 2')">Add task</button> -->
 	<div id="display">
 		<ol id="test">
@@ -84,7 +87,7 @@ function display(){
 			// + "</span>" 
 			+ "<input type='checkbox'"
 			+ "class='edit'"
-			+ "onclick='editTask()'"
+			// + "onclick='editTask()'"
 			+ "id ='" + i + "'"
 			+ ">"	
 			+ "</label>"
@@ -108,10 +111,11 @@ function deleteTask(){
 
 function editTask(){
 	var id = document.querySelector('.edit:checked').id; // some get html element
+	var editValue = document.getElementById("editField").value;
 
 	var array = unjsonify(localStorage.arrayDataSet);
 	array.splice(id, 1, {
-		data: "editted"
+		data: editValue
 	});
 	localStorage.setItem("arrayDataSet", jsonify(array));
 
