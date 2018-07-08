@@ -64,30 +64,40 @@ function display(){
 		document.getElementById("test").innerHTML = "";
 	}
 
+	// basic building blocks
+	var mainDiv = $("ol#test");
+
+
 	for(var i = 1; i < arrData.length;  i ++){
-		toPrint = arrData[i];
-		
-		var mainDiv = $("ol#test");
+		toPrint = arrData[i]; // the main data are stored in toPrint
 
 		mainDiv.append(
 			"<li>" 
+			+ "<label>"
 			+ "<input type='checkbox'"
-			+ "class='data'"
-			+ "onClick='deleteTask()'"
+			+ "class='delete'"
+			+ "onclick='deleteTask()'"
 			+ "id ='" + i + "'"
 			+ ">"		
 			+ toPrint.data 
-			+ "</input>"
+			// + "<span id='del' onclick='deleteTask()'> Delete"
+			// + "</span>" 
+			+ "<input type='checkbox'"
+			+ "class='edit'"
+			+ "onclick='editTask()'"
+			+ "id ='" + i + "'"
+			+ ">"	
+			+ "</label>"
 			+ "</li>"
 		);
 
 	}
 }
 
-function deleteTask(){
-	var id = document.querySelector('.data:checked').id; // some get html element
+// document.getElementById("del").addEventListener("click", deleteTask());
 
-	// console.log(id);
+function deleteTask(){
+	var id = document.querySelector('.delete:checked').id; // some get html element
 
 	var array = unjsonify(localStorage.arrayDataSet);
 	array.splice(id, 1);
@@ -96,5 +106,16 @@ function deleteTask(){
 	display();
 }
 
+function editTask(){
+	var id = document.querySelector('.edit:checked').id; // some get html element
+
+	var array = unjsonify(localStorage.arrayDataSet);
+	array.splice(id, 1, {
+		data: "editted"
+	});
+	localStorage.setItem("arrayDataSet", jsonify(array));
+
+	display();
+}
 
 </script>
