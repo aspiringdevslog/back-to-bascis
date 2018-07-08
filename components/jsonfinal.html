@@ -7,6 +7,7 @@
 <body>
 
 	<input type="text" name="input" id="input"><button id="add" onClick="addTaskSimple()">Simplified Add task</button>
+	<button id="add" onClick="deleteTask()">Delete Task</button>
 	<!-- <input type="text" name="input" id="input"><button id="add" onClick="addTaskSimple('testKey', 'test data user input 2')">Add task</button> -->
 	<div id="display">
 		<ol id="test">
@@ -66,19 +67,34 @@ function display(){
 	for(var i = 1; i < arrData.length;  i ++){
 		toPrint = arrData[i];
 		
-		var mainDiv = "ol#test";
-		var mainList = mainDiv + ".lv";
+		var mainDiv = $("ol#test");
 
-		$(mainDiv).append("<li>" + toPrint.data + "</li>");
-		$(mainList).append("<li>" + toPrint.data + "</li>");
+		mainDiv.append(
+			"<li>" 
+			+ "<input type='checkbox'"
+			+ "class='data'"
+			+ "onClick='deleteTask()'"
+			+ "id ='" + i + "'"
+			+ ">"		
+			+ toPrint.data 
+			+ "</input>"
+			+ "</li>"
+		);
 
-		
-		// console.log(toPrint.data); // .data needs to be a variable
 	}
-
-	// var test = "test 2";
-
-	// $("ol.test").append("<li>" + test + "</li>");
 }
+
+function deleteTask(){
+	var id = document.querySelector('.data:checked').id; // some get html element
+
+	// console.log(id);
+
+	var array = unjsonify(localStorage.arrayDataSet);
+	array.splice(id, 1);
+	localStorage.setItem("arrayDataSet", jsonify(array));
+
+	display();
+}
+
 
 </script>
