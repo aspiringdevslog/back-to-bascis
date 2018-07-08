@@ -50,7 +50,4 @@ function create(inputTarget, outputTarget, storageKey) {
 	  box.appendChild(li);
 	  li.innerHTML = entry;
 	})
-
-
-
 }

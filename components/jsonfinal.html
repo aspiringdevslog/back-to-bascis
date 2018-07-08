@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Test</title>
+</head>
+<body>
+
+	<input type="text" name="input" id="input"><button id="add" onClick="addTaskSimple()">Simplified Add task</button>
+	<!-- <input type="text" name="input" id="input"><button id="add" onClick="addTaskSimple('testKey', 'test data user input 2')">Add task</button> -->
+	<div id="display"></div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+// console.log("Hello World!");
+
+if (!localStorage.arrayDataSet){
+	var array = [{
+		data: "initialize"
+	}];	
+	localStorage.setItem("arrayDataSet", jsonify(array));
+}
+
+function addTaskSimple(){
+
+	var insertData = document.getElementById("input").value;
+	var array = unjsonify(localStorage.arrayDataSet);
+
+	array.push({
+		data: insertData // treat the data structure as a table, fieldName: dataToBeInserted
+	});
+
+	localStorage.setItem("arrayDataSet", jsonify(array));
+	localStorage.dataId = array.length;
+
+	display();
+}
+// convert JSON into array
+function unjsonify(jsonData){
+	return JSON.parse(jsonData);
+}
+
+// convert user input into JSON string
+function jsonify(userInput){
+	return JSON.stringify(userInput);
+}
+
+function display(){
+	var arrData = unjsonify(localStorage.arrayDataSet);
+	var toPrint;
+	for(var i = 1; i < arrData.length;  i ++){
+		toPrint = arrData[i];
+	}
+
+	document.getElementById("display").innerHTML = toPrint;
+}
+
+</script>
