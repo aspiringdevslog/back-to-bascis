@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+	<script src="todo.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- libraries/reference should be on the top -->
+</head>
+<body onload="display()">
+
+	<div class="container">
+		<input type="text" name="input" id="input"><button id="add" onClick="addItem()">Add task</button>
+		<!-- <button id="add" onClick="deleteTask()">Delete Task</button> -->
+		<input type="text" name="editField" id="editField"><button id="edit" onClick="editItem()">Edit task</button>
+	</div>
+
+	<!-- <input type="text" name="input" id="input"><button id="add" onClick="addItem('testKey', 'test data user input 2')">Add task</button> -->
+	<div id="display" class="container">
+		<ol id="test">		
+		</ol>
+	</div>
+</body>
+</html>
+
+

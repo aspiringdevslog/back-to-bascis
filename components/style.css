@@ -1,0 +1,22 @@
+body {
+	background: lightblue;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	/*text-align: center;*/
+}
+
+.delTask {
+	color: red;
+	cursor: pointer;
+}
+
+.delTask:hover {
+	/*cursor: pointer;*/
+}
+
+.cross {
+	max-width: 20px;
+}
