@@ -9,14 +9,18 @@
 </head>
 <body onload="display()">
 
-	<div class="container">
-		<input type="text" name="input" id="input"><button id="add" onClick="addItem()">Add task</button>
-		<!-- <button id="add" onClick="deleteTask()">Delete Task</button> -->
-		<input type="text" name="editField" id="editField"><button id="edit" onClick="editItem()">Edit task</button>
+	<div class="container-menu">
+		<div class="flex-item">
+			<input type="text" name="input" id="input"><button id="add" onClick="addItem()">Add task</button>
+		</div>
+<!-- 		<div class="flex-item">
+			<input type="text" name="editField" id="editField"><button id="edit" onClick="editItem()">Edit task</button>
+		</div>	 -->	
+		
 	</div>
 
 	<!-- <input type="text" name="input" id="input"><button id="add" onClick="addItem('testKey', 'test data user input 2')">Add task</button> -->
-	<div id="display" class="container">
+	<div id="display" class="container-list">
 		<ol id="test">		
 		</ol>
 	</div>

@@ -1,16 +1,36 @@
 body {
-	background: lightblue;
+	background: #252525;
+	color: #FAFAFA;
 }
 
-.container {
+.container-menu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #464646;
+	margin: 0 10% 10px 10%;
+	/*text-align: center;*/
+}
+
+.container-list {
 	display: flex;
 	justify-content: center;
+	background: #464646;
+	margin: 0 20% 10px 20%;
+	font-size: 20px;
+	/*max-width: 300px;*/
 	/*text-align: center;*/
+}
+
+.flex-item {
+	margin: 5px;
 }
 
 .delTask {
 	color: red;
 	cursor: pointer;
+	font-size: 14px;
 }
 
 .delTask:hover {
@@ -19,4 +39,15 @@ body {
 
 .cross {
 	max-width: 20px;
+}
+
+.edTask {
+	display: none;
+}
+
+.edit {
+	color: #EBEBEB;
+	font-size: 10px;
+	cursor: pointer;
+	vertical-align: top;
 }

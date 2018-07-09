@@ -40,24 +40,27 @@ function addItem(){
 	display();
 }
 
-function deleteTask(){
+function deleteItem(){
 	// var id = document.querySelector('.delete:checked').id; //  //TODO: abstract
 
-	var id = document.querySelector(".delTask").id; 
+	var index = document.querySelector('.delTask').id; 
 
 	var array = unjsonify(localStorage.getItem(localKey));
-	array.splice(id, 1);
+	array.splice(index, 1);
 	localStorage.setItem(localKey, jsonify(array));
 
 	display();
 }
 
 function editItem(){
-	var id = document.querySelector('.edit:checked').id; //  //TODO: abstract
-	var editValue = document.getElementById("editField").value;  //TODO: abstract
+	var index = document.querySelector('.edTask:checked').id; //  //TODO: abstract
+	var currentData = document.querySelector('.edTask:checked').data;
+	// console.log(index);
+	// var editValue = document.getElementById("editField").value;  //TODO: abstract
+	var editValue = prompt("enter new data: ")
 
 	var array = unjsonify(localStorage.getItem(localKey));
-	array.splice(id, 1, {
+	array.splice(index, 1, {
 		data: editValue
 	});
 	localStorage.setItem(localKey, jsonify(array));
@@ -87,17 +90,19 @@ function display(){
 			// + "<label class='deleteLabel'>"
 			// + "<input type='checkbox'"
 			// + "class='delete'"
-			// + "onclick='deleteTask()'"
+			// + "onclick='deleteItem()'"
 			// + "id ='" + i + "'"
 			// + ">"		
 			// + "</label>"
-			+ "<span onclick='deleteTask()' class='delTask' id='" + i + "'" + "> <img class='cross' src='cross.jpg'> </span>" // controls the delete "button"
+			+ "<span onclick='deleteItem()' class='delTask' id='" + i + "'" + "> delete </span>" // controls the delete "button"
 			+ toPrint.data 
-			+ "<label>" 
+			// + "<span onclick='editItem()' class='edTask' id='" + i + "'" + ">  Edit </span>" // controls the delete "button"
+			// + "<input type='radio' class='edTask id='" + i + "'" + ">"
+			+ "<label class='edit' onclick='editItem()'>" 
 			+ "<input type='checkbox'"
-			+ "class='edit'"
+			+ "class='edTask'"
 			+ "id ='" + i + "'"
-			+ ">"	
+			+ "> edit "	
 			+ "</label>"
 			+ "</li>"
 		);
