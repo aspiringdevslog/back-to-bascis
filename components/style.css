@@ -65,11 +65,30 @@ body {
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
-    width: 30%; /* Full width */
-    height: 30%; /* Full height */
-    margin: 5%;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    margin: 0%;
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+
+.flex-modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal-flex-item {
+	padding: 10px;
+	min-width: 400px;
+	min-height: 300px;
+	background: white;
+	color: black;
+}
+
+.modal-close {
+	color: red;
+}

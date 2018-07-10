@@ -53,6 +53,10 @@ function deleteItem(){
 }
 
 function editItem(){
+
+// idea: 1. click = check > open modal > in modal box there's a button that will then check for .edTask:checked. this should remove the error message. Hypothesis: everything runs at the same time and run twice? from console.log, line 56,57,56 again
+
+	modalClick();
 	// console.log(index);
 	if(document.querySelector('.edTask:checked').id){
 		var index = document.querySelector('.edTask:checked').id; //  //TODO: abstract
@@ -62,8 +66,8 @@ function editItem(){
 
 	var currentData = document.querySelector('.edTask:checked').data;
 	// console.log(index);
-	// var editValue = document.getElementById("editField").value;  //TODO: abstract
-	var editValue = prompt("enter new data: ");  // prompt
+	var editValue = document.getElementById("editField").value;  //TODO: abstract
+	// var editValue = prompt("enter new data: ");  // prompt
 	// document.getElementById("modal").style.display = "block";
 
 	var array = unjsonify(localStorage.getItem(localKey));
@@ -73,6 +77,7 @@ function editItem(){
 	localStorage.setItem(localKey, jsonify(array));
 
 	display();
+	modalClose();
 }
 
 // SMELLY FUNCTION
@@ -105,7 +110,7 @@ function display(){
 			+ toPrint.data 
 			// + "<span onclick='editItem()' class='edTask' id='" + i + "'" + ">  Edit </span>" // controls the delete "button"
 			// + "<input type='radio' class='edTask id='" + i + "'" + ">"
-			+ "<label class='edit' onclick='editItem()'>" 
+			+ "<label class='edit' onclick='modalClick()'>" 
 			+ "<input type='checkbox' " 
 			+ "class='edTask'"
 			+ "id ='" + i + "'"

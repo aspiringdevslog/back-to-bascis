@@ -33,8 +33,15 @@
 
 
 	<div class="modal">
-		<h1>hidden modal</h1>
-		<span onclick="modalClose()" class="spanButton">close</span>
+		<div class="flex-modal">
+			<div class="modal-flex-item">
+				<h1>hidden modal</h1>
+				<div class="flex-item">
+					<input type="text" name="editField" id="editField" value=""><button id="edit" onClick="editItem()">Edit task</button>
+				</div>
+				<span onclick="modalClose()" class="spanButton modal-close">close</span>
+			</div>
+		</div>
 	</div>
 
 
