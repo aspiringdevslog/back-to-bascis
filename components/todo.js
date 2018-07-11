@@ -78,6 +78,12 @@ function editItem(){
 
 	display();
 	modalClose();
+
+	clearInput("editField");
+}
+
+function clearInput(field){
+	document.getElementById(field).value = "";
 }
 
 // SMELLY FUNCTION
