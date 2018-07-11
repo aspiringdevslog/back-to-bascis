@@ -57,7 +57,9 @@ function editItem(){
 // idea: 1. click = check > open modal > in modal box there's a button that will then check for .edTask:checked. this should remove the error message. Hypothesis: everything runs at the same time and run twice? from console.log, line 56,57,56 again
 
 	modalClick();
+	modalDefault();
 	// console.log(index);
+
 	if(document.querySelector('.edTask:checked').id){
 		var index = document.querySelector('.edTask:checked').id; //  //TODO: abstract
 	} else {
@@ -65,6 +67,7 @@ function editItem(){
 	}
 
 	var currentData = document.querySelector('.edTask:checked').data;
+	
 	// console.log(index);
 	var editValue = document.getElementById("editField").value;  //TODO: abstract
 	// var editValue = prompt("enter new data: ");  // prompt
@@ -75,6 +78,7 @@ function editItem(){
 		data: editValue
 	});
 	localStorage.setItem(localKey, jsonify(array));
+
 
 	display();
 	modalClose();
@@ -136,4 +140,9 @@ function modalClick(){
 function modalClose(){
 	var x = document.getElementsByClassName('modal');
 	x[0].style.display="none"; 
+}
+
+
+function modalDefault(){
+	document.getElementById("originalItem").innerHTML = "Paragraph changed!";
 }
