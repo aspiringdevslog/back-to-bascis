@@ -15,6 +15,25 @@ display();
 // environment initialization END
 
 
+// Event listener for enter
+// var input = document.getElementById("input");
+// document.getElementById("input").addEventListener("keyup", function(){
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         document.getElementById("add").click();
+//     }
+// };
+
+var input = document.getElementById("input");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("add").click();
+    }
+});
+
+
+
 // HELPER FUNCTIONS
 // convert JSON into array
 function unjsonify(jsonData){
@@ -52,12 +71,17 @@ function deleteItem(){
 	display();
 }
 
+function focus(elementId){
+	document.getElementById(elementId).focus();
+}
+
 function editItem(){
 
 // idea: 1. click = check > open modal > in modal box there's a button that will then check for .edTask:checked. this should remove the error message. Hypothesis: everything runs at the same time and run twice? from console.log, line 56,57,56 again
 
 	modalClick();
-	modalDefault();
+
+	modalDefault(); // the reason why this won't kick in is because after editItem function is called, the modal box will close
 	// console.log(index);
 
 	if(document.querySelector('.edTask:checked').id){
@@ -135,6 +159,8 @@ function display(){
 function modalClick(){
 	var x = document.getElementsByClassName('modal');
 	x[0].style.display="block"; 
+	focus("editField");
+	modalDefault("originalItem", document.querySelector('.edTask:checked').data);
 }
 
 function modalClose(){
@@ -143,6 +169,6 @@ function modalClose(){
 }
 
 
-function modalDefault(){
-	document.getElementById("originalItem").innerHTML = "Paragraph changed!";
+function modalDefault(elementId, selectedItem){
+	document.getElementById(elementId).innerHTML = selectedItem;
 }
