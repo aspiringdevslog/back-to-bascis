@@ -160,14 +160,30 @@ function modalClick(){
 	var x = document.getElementsByClassName('modal');
 	x[0].style.display="block"; 
 	focus("editField");
-	modalDefault("originalItem", document.querySelector('.edTask:checked').data);
+
+	var arr = unjsonify(localStorage.getItem(localKey));
+	console.log(arr);
+	var index = document.querySelector('.edTask:checked').id ;
+	console.log(index);
+	modalDefault("originalItem", arr[index].data);
 }
 
 function modalClose(){
 	var x = document.getElementsByClassName('modal');
 	x[0].style.display="none"; 
+
+	uncheckAll();
+
+	// need to unselect the checkbox
 }
 
+function uncheckAll(){
+	var checkboxes = document.getElementsByClassName("edTask") ;
+	var allCheckboxes = checkboxes.querySelectorAll("input[type=checkbox]");  		
+	var val = allCheckboxes[0].checked;
+     for (var i = 0; i < allCheckboxes.length; i++) allCheckboxes[i].checked = val;
+ 
+}
 
 function modalDefault(elementId, selectedItem){
 	document.getElementById(elementId).innerHTML = selectedItem;
