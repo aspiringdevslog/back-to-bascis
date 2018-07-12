@@ -173,17 +173,27 @@ function modalClose(){
 	x[0].style.display="none"; 
 
 	uncheckAll();
+	uncheckAll();
 
 	// need to unselect the checkbox
 }
 
+// this works, but it will check all, need to run twice to get the desired effect
 function uncheckAll(){
-	var checkboxes = document.getElementsByClassName("edTask") ;
-	var allCheckboxes = checkboxes.querySelectorAll("input[type=checkbox]");  		
-	var val = allCheckboxes[0].checked;
-     for (var i = 0; i < allCheckboxes.length; i++) allCheckboxes[i].checked = val;
- 
+	var checked = !$(this).data('checked');
+	$('input:checkbox').prop('checked', checked);
+	$(this).val(checked ? 'uncheck all' : 'check all' )
+	$(this).data('checked', checked);
 }
+
+
+// function uncheckAll(){
+// 	var checkboxes = document.getElementsByClassName("edTask") ;
+// 	var allCheckboxes = checkboxes.querySelectorAll("input[type=checkbox]");  		
+// 	var val = allCheckboxes[0].checked;
+//      for (var i = 0; i < allCheckboxes.length; i++) allCheckboxes[i].checked = val;
+ 
+// }
 
 function modalDefault(elementId, selectedItem){
 	document.getElementById(elementId).innerHTML = selectedItem;
