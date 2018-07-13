@@ -32,6 +32,14 @@ input.addEventListener("keyup", function(event) {
     }
 });
 
+var input = document.getElementById("editField");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("edit").click();
+    }
+});
+
 
 
 // HELPER FUNCTIONS
@@ -81,7 +89,7 @@ function editItem(){
 
 	modalClick();
 
-	modalDefault(); // the reason why this won't kick in is because after editItem function is called, the modal box will close
+	// modalDefault(); // the reason why this won't kick in is because after editItem function is called, the modal box will close
 	// console.log(index);
 
 	if(document.querySelector('.edTask:checked').id){
