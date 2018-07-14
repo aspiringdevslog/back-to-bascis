@@ -16,24 +16,18 @@ display();
 
 
 // Event listener for enter
-// var input = document.getElementById("input");
-// document.getElementById("input").addEventListener("keyup", function(){
-//     event.preventDefault();
-//     if (event.keyCode === 13) {
-//         document.getElementById("add").click();
-//     }
-// };
 
-var input = document.getElementById("input");
-input.addEventListener("keyup", function(event) {
+
+var add = document.getElementById("addField");
+add.addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
         document.getElementById("add").click();
     }
 });
 
-var input = document.getElementById("editField");
-input.addEventListener("keyup", function(event) {
+var edit = document.getElementById("editField");
+edit.addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
         document.getElementById("edit").click();
@@ -54,7 +48,7 @@ function jsonify(userInput){
 
 // MAIN FUNCTIONS
 function addItem(){
-	var insertData = document.getElementById("input").value; //TODO: abstract ElementID for reusable add item (from different input fields)
+	var insertData = document.getElementById("addField").value; //TODO: abstract ElementID for reusable add item (from different input fields)
 	var array = unjsonify(localStorage.getItem(localKey));
 
 	array.push({
