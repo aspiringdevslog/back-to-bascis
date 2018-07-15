@@ -18,21 +18,21 @@ display();
 // Event listener for enter
 
 
-var add = document.getElementById("addField");
-add.addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode === 13) {
-        document.getElementById("add").click();
-    }
-});
+// var add = document.getElementById("addField");
+// add.addEventListener("keyup", function(event) {
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         document.getElementById("add").click();
+//     }
+// });
 
-var edit = document.getElementById("editField");
-edit.addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode === 13) {
-        document.getElementById("edit").click();
-    }
-});
+// var edit = document.getElementById("editField");
+// edit.addEventListener("keyup", function(event) {
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         document.getElementById("edit").click();
+//     }
+// });
 
 
 

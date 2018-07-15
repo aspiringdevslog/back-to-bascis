@@ -9,7 +9,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	background: #464646;
-	margin: 0 10% 10px 10%;
+	margin: 0 5% 10px 5%;
 	/*text-align: center;*/
 }
 
@@ -17,7 +17,7 @@ body {
 	display: flex;
 	justify-content: center;
 	background: #464646;
-	margin: 0 20% 10px 20%;
+	margin: 0 5% 10px 5%;
 	font-size: 20px;
 	/*max-width: 300px;*/
 	/*text-align: center;*/
