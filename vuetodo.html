@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Test</title>
+	<!-- production version, optimized for size and speed -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+<!-- <div id="todolist">
+	<ol>
+		<li v-for="todo in todos">
+			{{todo.item}}
+		</li>
+	</ol>
+</div>
+
+<div id="todoInput">
+	<button v-on:click="addtodo">Add</button>
+</div> -->
+
+<div id="app-5">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Add "New Item"</button>
+</div>
+
+<div id="app-4">
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+</div>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+// var todoapp = new Vue({
+//   el: '#todolist',
+//   data: {
+//     todos: [
+//       { item: 'Learn JavaScript' },
+//       { item: 'Learn Vue' },
+//       { item: 'Build something awesome' }
+//     ]
+//   }
+// })
+
+// var todoInput = new Vue({
+// 	el:'#todoInput',
+// 	data: {
+
+// 	},
+// 	methods: {
+// 		addtodo: function(){
+// 			todolist.todos.push({ item: 'New item' })
+// 		}
+// 	}
+// })
+
+
+
+var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    todos: [
+      { text: 'Learn JavaScript' },
+      { text: 'Learn Vue' },
+      { text: 'Build something awesome' }
+    ]
+  }
+})
+
+
+var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Hello Vue.js!'
+  },
+  methods: {
+    reverseMessage: function () {
+      app4.todos.push({ text: 'New item' })
+    }
+  }
+})
+
+
+
+</script>
